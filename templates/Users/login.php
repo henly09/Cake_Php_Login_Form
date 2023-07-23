@@ -4,25 +4,23 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <!-- in /templates/Users/login.php -->
-        <div class="users form">
+        <div class="users form content" style="width: 50%; margin: 0 auto;">
             <?= $this->Flash->render() ?>
-            <h3>Login</h3>
+            <div style="text-align: center;">
+                <h3 style="font-size: 30px; font-weight: bold;">Login</h3>
+            </div>
             <?= $this->Form->create() ?>
             <fieldset>
                 <?= $this->Form->control('email', ['required' => true]) ?>
                 <?= $this->Form->control('password', ['required' => true]) ?>
             </fieldset>
-            <?= $this->Form->submit(__('Login')); ?>
-            <?= $this->Form->end() ?>
+            <div style="display: flex; justify-content: center;">
+                <?= $this->Form->submit(__('Login'), ['class' => 'btn btn-primary', 'style' => 'margin-right: 10px;']) ?>
+                <?= $this->Html->link(__('Signup'), ['controller' => 'Users', 'action' => 'signup'], ['class' => 'button']) ?>
+            </div>
+                <?= $this->Form->end() ?>
+                
         </div>
     </div>
-</div>

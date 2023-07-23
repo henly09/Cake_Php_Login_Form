@@ -34,12 +34,6 @@ use Authentication\Identifier\IdentifierInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
 use Cake\Routing\Router;
 use Psr\Http\Message\ServerRequestInterface;
-use Authentication\Identifier\PasswordIdentifier;
-use Authentication\Authenticator\FormAuthenticator;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-
 
 /**
  * Application setup class.
@@ -49,25 +43,6 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class Application extends BaseApplication implements AuthenticationServiceProviderInterface
 {
-
-    public function authentication(ServiceLocatorInterface $serviceLocator): AuthenticationServiceInterface
-    {
-        $authenticationService = new AuthenticationService([
-            'identifiers' => [
-                // Use the password identifier for Form-based authentication
-                PasswordIdentifier::class,
-            ],
-            'authenticators' => [
-                // Use the Form authenticator for Form-based authentication
-                FormAuthenticator::class,
-            ],
-            'unauthenticatedRedirect' => '/users/login', // Redirect URL for unauthenticated users
-            'queryParam' => 'redirect', // The query string parameter to use for redirect after login
-        ]);
-
-        return $authenticationService;
-    }
-    
     /**
      * Load all the application configuration and bootstrap logic.
      *
@@ -111,9 +86,10 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $middlewareQueue
             // ... other middleware added before
             ->add(new RoutingMiddleware($this))
-            // add Authentication after RoutingMiddleware
+            ->add(new BodyParserMiddleware())
+            // Add the AuthenticationMiddleware. It should be after routing and body parser.
             ->add(new AuthenticationMiddleware($this));
-
+    
         return $middlewareQueue;
     }
 
@@ -126,7 +102,10 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
 public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
 {
     $authenticationService = new AuthenticationService([
-        'unauthenticatedRedirect' => '/users/login',
+        'unauthenticatedRedirect' => \Cake\Routing\Router::url([
+            'controller' => 'Users',
+            'action' => 'login'
+        ]),
         'queryParam' => 'redirect',
     ]);
 
@@ -146,7 +125,10 @@ public function getAuthenticationService(ServerRequestInterface $request): Authe
             'username' => 'email',
             'password' => 'password',
         ],
-        'loginUrl' => '/users/login',
+        'loginUrl' => \Cake\Routing\Router::url([
+            'controller' => 'Users',
+            'action' => 'login'
+        ]),
     ]);
 
     return $authenticationService;

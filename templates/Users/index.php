@@ -5,8 +5,11 @@
  */
 ?>
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Users') ?></h3>
+    <div style="display: flex; justify-content: flex-end;">
+            <?= $this->Html->link(__('New User'), ['action' => 'signup'], ['class' => 'button' , 'style' => 'margin-right: 10px;']) ?> 
+            <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button']) ?>
+    </div>
+
     <div class="table-responsive">
         <table>
             <thead>
@@ -14,7 +17,6 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
                     <th><?= $this->Paginator->sort('phone') ?></th>
-                    <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -26,7 +28,6 @@
                     <td><?= $this->Number->format($user->id) ?></td>
                     <td><?= h($user->email) ?></td>
                     <td><?= h($user->phone) ?></td>
-                    <td><?= h($user->password) ?></td>
                     <td><?= h($user->created) ?></td>
                     <td><?= h($user->modified) ?></td>
                     <td class="actions">

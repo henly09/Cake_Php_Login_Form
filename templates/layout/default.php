@@ -14,7 +14,13 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+/**
+ * @var \App\View\AppView $this
+ * @var iterable<\App\Model\Entity\User> $users
+ */
+
+
+$cakeDescription = 'Cake-Auth';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +28,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= $cakeDescription ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
@@ -37,13 +42,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <nav class="top-nav">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>Auth</a>
         </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+        <div>
+             Logged In: <?= $this->Identity->get('email');?>
         </div>
+    </div>
     </nav>
     <main class="main">
         <div class="container">
