@@ -6,9 +6,9 @@
 ?>
     <div class="column-responsive column-80">
         <!-- in /templates/Users/login.php -->
-        <div class="users form content" style="width: 50%; margin: 0 auto;">
+        <div class="users form content col-7 mx-auto">
             <?= $this->Flash->render() ?>
-            <div style="text-align: center;">
+            <div class="col-12 text-center">
                 <h3 style="font-size: 30px; font-weight: bold;">Login</h3>
             </div>
             <?= $this->Form->create() ?>
@@ -17,7 +17,7 @@
                 <?= $this->Form->control('password', ['required' => true]) ?>
             </fieldset>
             <div style="display: flex; justify-content: center;">
-                <?= $this->Form->submit(__('Login'), ['class' => 'btn btn-primary', 'style' => 'margin-right: 10px;']) ?>
+                <?= $this->Form->submit(__('Login'), ['class' => 'btn btn-primary mr-3']) ?>
                 <?= $this->Html->link(__('Signup'), ['controller' => 'Users', 'action' => 'signup'], ['class' => 'button']) ?>
             </div>
                 <?= $this->Form->end() ?>

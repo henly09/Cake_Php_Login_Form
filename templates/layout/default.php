@@ -14,13 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\User> $users
- */
-
-
-$cakeDescription = 'Cake-Auth';
+$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,8 +22,10 @@ $cakeDescription = 'Cake-Auth';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        <?= $cakeDescription ?>
+        <?= $cakeDescription ?>:
+        <?= $this->fetch('title') ?>
     </title>
+    <?= $this->Html->css($this->Url->build('/css/bootstrap.css')) ?>
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
@@ -42,14 +38,15 @@ $cakeDescription = 'Cake-Auth';
 </head>
 <body>
     <nav class="top-nav">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
         <div class="top-nav-title">
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>Auth</a>
         </div>
-        <div>
-             Logged In: <?= $this->Identity->get('email');?>
+        <div class="top-nav-links">
+        <?php
+                $loggedInEmail = $this->Identity->get('email');
+                echo $loggedInEmail ? 'Logged In: ' . $loggedInEmail : '';
+            ?>
         </div>
-    </div>
     </nav>
     <main class="main">
         <div class="container">

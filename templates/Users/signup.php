@@ -5,7 +5,7 @@
  */
 ?>
     <div class="column-responsive column-80">
-        <div class="users form content" style="width: 70%; margin: 0 auto;>
+        <div class="users form content col-8 mx-auto">
             <?= $this->Form->create($user) ?>
             <fieldset>
             <div style="text-align: center;">
@@ -15,7 +15,10 @@
                 <?= $this->Form->control('phone', ['required' => true]) ?>
                 <?= $this->Form->control('password', ['required' => true]) ?>
             </fieldset>
-            <?= $this->Form->button(__('Signup'), ['class'=> 'btn btn-primary']) ?>
+            <div style="display: flex; justify-content: center;">
+                <?= $this->Html->link(__('Go Back'), $this->Url->build($this->request->referer()),['class' => 'button mr-3']) ?>
+                <?= $this->Html->link(__('Signup'), ['controller' => 'Users', 'action' => 'signup'], ['class' => 'button']) ?>
+            </div>
             <?= $this->Form->end() ?>
         </div>
     </div>
