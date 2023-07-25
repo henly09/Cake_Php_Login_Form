@@ -17,8 +17,8 @@
                 <?= $this->Form->control('password', ['required' => true]) ?>
             </fieldset>
             <div style="display: flex; justify-content: center;">
-                <?= $this->Form->submit(__('Login'), ['class' => 'btn btn-primary mr-3']) ?>
-                <?= $this->Html->link(__('Signup'), ['controller' => 'Users', 'action' => 'signup'], ['class' => 'button']) ?>
+            <?= $this->Html->link(__('Signup'), ['controller' => 'Users', 'action' => 'signup'], ['class' => 'button mr-3']) ?>
+                <?= $this->Form->submit(__('Login'), ['class' => 'btn btn-primary ']) ?>
             </div>
                 <?= $this->Form->end() ?>
                 
