@@ -7,13 +7,11 @@
 <div class="row">
     <div class="side-drawer">
         <div class="side-nav">
-                <h4 class="heading"><?= __('Actions') ?></h4>
-                <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-                <button onclick="toggleDrawer()">Toggle Drawer</button>
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </div>
-    <!-- <button onclick="toggleDrawer()">Toggle Drawer</button> -->
-    <div class="column-responsive column-80">
+    <div class="column-responsive column-80" style="margin-left: 200px;"> <!-- Adjust the left margin to the side drawer width -->
         <div class="users form content">
             <?= $this->Form->create($user) ?>
             <fieldset>
@@ -34,35 +32,14 @@
     .side-drawer {
         position: fixed;
         top: 0;
-        left: -300px; /* Position off-screen to the left */
-        width: 300px;
+        left: 0;
+        width: 250px;
         height: 100%;
         background-color: #f0f0f0;
-        transition: left 0.5s ease; /* You can add a smooth animation */
-        }
-
-        .side-drawer.open {
-        left: 0; /* Show the drawer when it's open */
-        }
-</style>
-
-<script>
-function openDrawer() {
-  const drawer = document.querySelector('.side-drawer');
-  drawer.classList.add('open');
-}
-
-function closeDrawer() {
-  const drawer = document.querySelector('.side-drawer');
-  drawer.classList.remove('open');
-}
-
-function toggleDrawer() {
-    const drawer = document.querySelector('.side-drawer');
-    if (drawer.classList.contains('open')) {
-        closeDrawer();
-    } else {
-        openDrawer();
     }
-}
-</script>
+
+    /* Additional style to make the main content area relative to the side drawer */
+    .column-responsive {
+        position: relative;
+    }
+</style>

@@ -4,19 +4,15 @@
  * @var iterable<\App\Model\Entity\User> $users
  */
 ?>
-<div style="display: flex;">
-        <div style="width: 200px; background-color: #f2f2f2; padding: 15px;">
-            <?= $this->element('navigation'); ?>
-        </div>
-<div class="users index content" style="flex: 1; padding: 15px;">
-    <div style="display: flex; justify-content: flex-end;">
-            <?= $this->Html->link(__('New User'), ['action' => 'signup'], ['class' => 'button' , 'style' => 'margin-right: 10px;']) ?> 
-            <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button']) ?>
-    </div>
 
+<!-- Navigation Element -->
+<?= $this->element('navigation'); ?>
+
+<!-- Table Container (Fixed Position) -->
+<div class="table-container">
     <div class="table-responsive">
         <table>
-            <thead>
+        <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
@@ -46,7 +42,7 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
+        <?= $this->Paginator->first('<< ' . __('first')) ?>
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
             <?= $this->Paginator->next(__('next') . ' >') ?>
@@ -55,4 +51,15 @@
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
-</div>
+
+<!-- Additional CSS -->
+<style>
+    .table-container {
+        position: fixed;
+        top: 100px; /* Adjust the top distance as needed to align the table with your navigation height */
+        right: 3%;
+        width: 75%; /* Set the width of the table container */
+        max-height: calc(100vh - 150px); /* Set the max-height to fit the table within the viewport */
+        overflow-y: auto; /* Add vertical scroll if necessary */
+    }
+</style>

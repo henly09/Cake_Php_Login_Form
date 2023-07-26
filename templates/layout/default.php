@@ -41,18 +41,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>Auth</a>
-        </div>
-        <div class="top-nav-links">
-        <?php
-                $loggedInEmail = $this->Identity->get('email');
-                echo $loggedInEmail ? 'Logged In: ' . $loggedInEmail : '';
-            ?>
-        </div>
-    </nav>
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
@@ -63,3 +51,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </footer>
 </body>
 </html>
+
+
+
