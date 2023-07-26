@@ -26,6 +26,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->css($this->Url->build('/css/bootstrap.css')) ?>
+    <?= $this->Html->script($this->Url->build('/js/popper.js')) ?>
+    <?= $this->Html->script($this->Url->build('/js/bootstrap.js')) ?>
+    <?= $this->Html->script($this->Url->build('/js/jQuery.js')) ?>
+
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
@@ -37,6 +41,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
+    
     <nav class="top-nav">
         <div class="top-nav-title">
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>Auth</a>

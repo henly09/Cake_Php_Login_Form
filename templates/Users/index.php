@@ -4,7 +4,11 @@
  * @var iterable<\App\Model\Entity\User> $users
  */
 ?>
-<div class="users index content">
+<div style="display: flex;">
+        <div style="width: 200px; background-color: #f2f2f2; padding: 15px;">
+            <?= $this->element('navigation'); ?>
+        </div>
+<div class="users index content" style="flex: 1; padding: 15px;">
     <div style="display: flex; justify-content: flex-end;">
             <?= $this->Html->link(__('New User'), ['action' => 'signup'], ['class' => 'button' , 'style' => 'margin-right: 10px;']) ?> 
             <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button']) ?>
@@ -50,4 +54,5 @@
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
+</div>
 </div>
