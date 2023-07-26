@@ -51,7 +51,12 @@ public function login()
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
+
+        $paginateOptions = [
+            'limit' => 10,
+        ];
+
+        $users = $this->paginate($this->Users, $paginateOptions);
 
         $this->set(compact('users'));
     }
