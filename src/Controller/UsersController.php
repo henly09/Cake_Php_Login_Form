@@ -59,6 +59,24 @@ public function login()
         $users = $this->paginate($this->Users, $paginateOptions);
 
         $this->set(compact('users'));
+
+        // Disable layout and view rendering
+        // $this->autoRender = false;
+        // $this->viewBuilder()->setLayout('ajax'); // Use 'ajax' or null if you have an 'ajax' layout
+
+        // // Convert the data array to JSON format
+        // $jsonData = json_encode($users);
+
+        // // Set the response content type to JSON
+        // $this->response = $this->response->withType('application/json');
+
+        // // Set the JSON data to be sent in the response body
+        // $this->response->getBody()->write($jsonData);
+
+        // // Finally, return the response object
+        // return $this->response;
+
+        
     }
 
     /**
