@@ -1,9 +1,20 @@
  <!-- Side Drawer -->
- <div class="side-drawer">
+ <div class="side-drawer bg-dark p-3">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h4 class="mb-0">
+                            <a data-bs-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                                <?= __('Actions') ?>
+                            </a>
+                        </h4>
+                        <div class="collapse pt-3 pb-3 pl-5" id="collapseExample">
+                            <h6>
+                                <?= $this->Html->link(__('Billings'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
     </div>
   <!-- Top Navigation -->
   <nav class="top-nav">
@@ -12,15 +23,25 @@
         </div>
         <div class="top-nav-links">
             <div class="dropdown" id="logoutDropdown">
-                <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-gear-fill">
-                        <?php
+                <button role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php
                         $loggedInEmail = $this->Identity->get('email');
                         echo $loggedInEmail ? 'Logged In: ' . $loggedInEmail : '';
                         ?>
-                    </i> <!-- You can use any gear icon or other icon you prefer -->
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <?= $this->Html->link(
+                            'Change Password',
+                            ['controller' => 'Users', 'action' => 'edit', $this->Identity->get('id')],
+                            ['class' => 'dropdown-item']); ?>
+                    </li>
+                    <li>
+                        <?= $this->Html->link(
+                            'Account Information',
+                            ['controller' => 'Users', 'action' => 'view', $this->Identity->get('id')],
+                            ['class' => 'dropdown-item']); ?>
+                    </li>
                     <li>
                         <?= $this->Form->postLink(
                             'Logout',
@@ -28,21 +49,30 @@
                             ['class' => 'dropdown-item']
                         ); ?>
                     </li>
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 
     <style>
+
+.collapsible-header {
+  cursor: pointer;
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
 .side-drawer {
   position: fixed;
   top: 0;
   left: 0;
   width: 250px; /* Set the width of the side drawer */
   height: 100%;
-  background-color: #f0f0f0;
   z-index: 1000; /* Ensure the side drawer appears above other content */
-  padding: 15px;
   transition: width 0.3s ease; /* Add smooth transition for side drawer animation */
 }
 
@@ -74,41 +104,32 @@
   right: 0; /* Stretch the width to match the parent container */
   min-width: 100%; /* Ensure the dropdown menu takes at least the width of its parent container */
   margin: 0;
-  padding: 0;
+  padding: 5px 0px 0px 0px;
   list-style: none;
   z-index: 1000; /* Ensure the dropdown menu appears above other content */
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
 }
 
 .dropdown-item {
   display: block;
   width: 95%;
-  padding: 5px;
+  padding: 10px;
   clear: both;
   font-weight: 400;
   color: #212529;
-  text-align: inherit;
-  white-space: nowrap;
   background-color: transparent;
-  border: 0;
   transition: background-color 0.3s ease;
+  border-radius: 4px;
 }
 
 .dropdown-item:hover {
+  width: 95%;
   color: #fff;
-  background-color: #ff0000;
+  background-color: #ff484d;
 }
 
-    </style>
-
-<script>
-        $(document).ready(function () {
-            // Toggle dropdown on click
-            $('.top-nav-links').on('click', function () {
-                $('#logoutDropdown').toggleClass('show');
-            });
-        });
-    </script>
+</style>

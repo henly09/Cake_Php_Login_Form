@@ -23,7 +23,7 @@
                 <legend><?= __('Edit User') ?></legend>
                 <?php
                     echo $this->Form->control('email');
-                    echo $this->Form->control('password' , ['value' => '']);
+                    echo $this->Form->control('password');
                     echo $this->Form->control('phone');
                 ?>
             </fieldset>
