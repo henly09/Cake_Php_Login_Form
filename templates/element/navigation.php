@@ -1,17 +1,17 @@
  <!-- Side Drawer -->
- <div class="side-drawer bg-dark p-3">
+ <div class="side-drawer bg-white p-3">
         <div class="side-nav">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h4 class="mb-0">
+                <div class="mt-5 ml-3">
+                    <div class="bg-white" id="headingOne">
+                        <h6 class="mb-3">
                             <a data-bs-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
                                 <?= __('Actions') ?>
                             </a>
-                        </h4>
-                        <div class="collapse pt-3 pb-3 pl-5" id="collapseExample">
-                            <h6>
-                                <?= $this->Html->link(__('Billings'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-                            </h6>
+                        </h6>
+                        <div class="collapse pt-2 pb-2 pl-5" id="collapseExample">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item']) ?>
+                            </h7>
                         </div>
                     </div>
                 </div>
