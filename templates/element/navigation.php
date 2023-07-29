@@ -1,11 +1,8 @@
  <!-- Side Drawer -->
- <div class="side-drawer bg-light p-3">
-        <div class="side-nav">
-                <div>
-                  
-                </div>
+ <div class="side-drawer bg-dark">
+        <div class="side-nav h-88 overflow-auto">
                 <div class="mt-5 ml-3">
-                    <div class="bg-light" id="headingOne">
+                    <div class="bg-dark" id="headingOne">
                         <h6 class="mb-3 text-white font-weight-bold ">
                             <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
                             <?= __('Billing') ?>
@@ -28,7 +25,59 @@
                         </div>
                     </div>
                 </div>
+                <div class="mt-5 ml-3">
+                    <div class="bg-dark" id="headingOne">
+                        <h6 class="mb-3 text-white font-weight-bold ">
+                            <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseExample2" aria-expanded="true" aria-controls="collapseExample2">
+                            <?= __('Billing') ?>
+                            </a>
+                        </h6>
+                        <div class="collapse pt-2 pb-2 pl-5 hoverList" id="collapseExample2">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item', 'style' => 'text-decoration: none;']) ?>
+                            </h7>
+                        </div>
+                        <div class="collapse pt-2 pb-2 pl-5 hoverList" id="collapseExample2">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item', 'style' => 'text-decoration: none;']) ?>
+                            </h7>
+                        </div>
+                        <div class="collapse pt-2 pb-2 pl-5 hoverList" id="collapseExample2">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item', 'style' => 'text-decoration: none;']) ?>
+                            </h7>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 ml-3">
+                    <div class="bg-dark" id="headingOne">
+                        <h6 class="mb-3 text-white font-weight-bold ">
+                            <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseExample3" aria-expanded="true" aria-controls="collapseExample3">
+                            <?= __('Billing') ?>
+                            </a>
+                        </h6>
+                        <div class="collapse pt-2 pb-2 pl-5 hoverList" id="collapseExample3">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item', 'style' => 'text-decoration: none;']) ?>
+                            </h7>
+                        </div>
+                        <div class="collapse pt-2 pb-2 pl-5 hoverList" id="collapseExample3">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item', 'style' => 'text-decoration: none;']) ?>
+                            </h7>
+                        </div>
+                        <div class="collapse pt-2 pb-2 pl-5 hoverList" id="collapseExample3">
+                            <h7>
+                                <?= $this->Html->link(__('Index'), ['controller' => 'Billing','action' => 'index'], ['class' => 'side-nav-item', 'style' => 'text-decoration: none;']) ?>
+                            </h7>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="position-absolute fixed-bottom w-100 bg-light p-3 text-center">
+        <p>This is the footer content for your side nav.</p>
     </div>
+</div>
   <!-- Top Navigation -->
   <nav class="top-nav">
         <div class="top-nav-title">
@@ -87,25 +136,30 @@
         transition: max-height 0.3s ease-out;
       }
 
+
       .side-drawer {
-        position: fixed;
-        width: 250px; /* Set the width of the side drawer */
         height: 100%;
+        position: fixed;
+        width: 250px;
+      }
+
+      .side-nav {
+        height: calc(100% - 80px); /* Set the side nav height to 100% minus the footer's height */
+        overflow-y: auto; /* Enable vertical scrolling */
       }
 
       /* Style for the top navigation */
       .top-nav {
         position: fixed;
-        top: 0;
-        left: 250px; /* Adjust this value to match the width of the side drawer */
-        right: 0;
+        top
+        right:0;
+        left: 250px;
         height: 60px; /* Set the height of the top navigation */
         background-color: #f2f2f2;
         z-index: 1000; /* Ensure the top navigation appears above other content */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 15px;
         /* Set the width of the top navigation using calc() */
         width: calc(100% - 250px);
       }
@@ -132,15 +186,13 @@
       }
 
       .dropdown-item {
-        display: block;
         width: 95%;
         padding: 10px;
-        clear: both;
         font-weight: 400;
         color: #212529;
         background-color: transparent;
         transition: background-color 0.3s ease;
-        border-radius: 4px;
+        border-radius: 4px
       }
 
       .dropdown-item:hover {
