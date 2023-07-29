@@ -40,7 +40,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
 <?php
     // Determine if the current controller is "Users" and the action is "login" or "signup"
     $isLoginOrSignupPage = (
@@ -48,20 +47,53 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         in_array($this->getRequest()->getParam('action'), ['login', 'signup','view'.'edit'])
     );
     ?>
+    
     <?php if (!$isLoginOrSignupPage): ?>
         <!-- Include the navigation element only on non-login and non-signup pages -->
+        <body>
         <?= $this->element('navigation'); ?>
-    <?php endif; ?>
-    <main class="main">
+        <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
     </main>
+    </body>
+    <?php elseif ($isLoginOrSignupPage): ?>
+        <!-- Not include the navigation element only on non-login and non-signup pages -->
+        <body class="container-fluid">
+            <main class="main">
+            <div class="container">
+                <?= $this->Flash->render() ?>
+                <?= $this->fetch('content') ?>
+            </div>
+        </main>
+        </body>
+    <?php endif; ?>
+
+
     <footer>
     </footer>
-</body>
+
+<style>
+        .container-fluid {
+            position: relative;
+            background: url('/img/acc_login_bg.jpg') center center / cover no-repeat;
+        }
+
+        .container-fluid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+</style>
 </html>
+
 
 
 
