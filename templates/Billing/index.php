@@ -5,8 +5,6 @@
  */
 ?>
 
-<!-- Navigation Element -->
-<?= $this->element('navigation'); ?>
 
 <!-- Table Container (Fixed Position) -->
 <div class="table-container">

@@ -47,6 +47,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?= $this->fetch('content') ?>
         </div>
     </main>
+    <?php
+    // Determine if the current controller is "Users" and the action is "login" or "signup"
+    $isLoginOrSignupPage = (
+        $this->getRequest()->getParam('controller') === 'Users' &&
+        in_array($this->getRequest()->getParam('action'), ['login', 'signup'])
+    );
+    ?>
+
+    <?php if (!$isLoginOrSignupPage): ?>
+        <!-- Include the navigation element only on non-login and non-signup pages -->
+        <?= $this->element('navigation'); ?>
+    <?php endif; ?>
     <footer>
     </footer>
 </body>
