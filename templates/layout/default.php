@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Accounting Software';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,15 +22,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= $cakeDescription ?>
     </title>
     <?= $this->Html->css($this->Url->build('/css/bootstrap.css')) ?>
     <?= $this->Html->script($this->Url->build('/js/popper.js')) ?>
     <?= $this->Html->script($this->Url->build('/js/bootstrap.js')) ?>
     <?= $this->Html->script($this->Url->build('/js/jQuery.js')) ?>
 
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->meta('icon', '/img/acc_ico.ico'); ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 

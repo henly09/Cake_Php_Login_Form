@@ -1,6 +1,17 @@
  <!-- Side Drawer -->
  <div class="side-drawer bg-dark">
         <div class="side-nav h-88 overflow-auto">
+        <div class="text-center mt-5">
+            <figure>
+                <img src="<?= $this->Url->image('/img/dummy_Image.jpg', ['fullBase' => true]) ?>" class="rounded-circle" alt="Profile Picture" width="80" height="80">
+                <figcaption class="text-white mt-3">
+                <?php
+                        $loggedInEmail = $this->Identity->get('email');
+                        echo $loggedInEmail ? $loggedInEmail : '';
+                        ?>
+                </figcaption>
+            </figure>
+        </div>
                 <div class="mt-5 ml-3">
                     <div class="bg-dark" id="headingOne">
                         <h6 class="mb-3 text-white font-weight-bold ">
@@ -151,17 +162,13 @@
       /* Style for the top navigation */
       .top-nav {
         position: fixed;
-        top
+        top:0;
         right:0;
         left: 250px;
         height: 60px; /* Set the height of the top navigation */
         background-color: #f2f2f2;
         z-index: 1000; /* Ensure the top navigation appears above other content */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        /* Set the width of the top navigation using calc() */
-        width: calc(100% - 250px);
+        width: calc(100% - 250px);  /* Set the width of the top navigation using calc() */
       }
       /* Dropdown Styles */
       .dropdown {
